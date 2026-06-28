@@ -1,0 +1,24 @@
+id: contract.immutable-typescript-sdk
+canonical_label: Immutable TypeScript SDK Contract
+version: 0.1.0
+status: draft
+invariants:
+  - id: public-api-byte-stability
+    description: Public package barrels must be generated from src/UML/immutable-typescript-sdk.uml without semantic drift.
+  - id: no-business-secrets
+    description: No secrets, tokens, private keys, or environment-bound credentials may live in business modules or semantic manifests.
+  - id: entity-response-identity
+    description: Entity channel responses must always expose id and canonicalLabel; UI uses canonicalLabel, systems use id.
+  - id: two-public-routes-only
+    description: The only public HTTP routes are GET /openintent.yml and POST /agent. Other operational channels are gRPC, WebSocket, SSE/NDJSON observability, or package-internal calls.
+  - id: behavior-determinism
+    description: QuarkBehaviors must be deterministic, schema-bound, testable, and reusable across AtomicBehaviors.
+  - id: atomic-composition
+    description: AtomicBehaviors compose QuarkBehaviors through .2flow and must not hide orchestration inside ad-hoc TypeScript calls.
+checks:
+  - command: pnpm check:uml
+    proves:
+      - public-api-byte-stability
+  - command: pnpm -r typecheck
+    proves:
+      - typescript-package-compatibility
