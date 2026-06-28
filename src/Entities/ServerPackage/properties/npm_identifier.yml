@@ -1,0 +1,8 @@
+id: property.server.npm_identifier
+entity: entity.server-package
+name: npm_identifier
+canonical_label: Server NPM Identifier
+type: keyword
+required: true
+immutable: true
+description: The npm identifier for the server package.
