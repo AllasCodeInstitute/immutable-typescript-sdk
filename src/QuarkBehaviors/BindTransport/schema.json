@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BindTransportIO",
+  "type": "object",
+  "required": ["channel", "transport"],
+  "properties": {
+    "channel": { "type": "string" },
+    "transport": { "type": "string", "enum": ["stdio", "sse", "streamable-http", "websocket", "typescript"] },
+    "capabilities": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}
