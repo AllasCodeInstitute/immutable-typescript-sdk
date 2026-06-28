@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ResolvePackageExportIO",
+  "type": "object",
+  "required": ["packageName", "exportName", "sourceModule"],
+  "properties": {
+    "packageName": { "type": "string" },
+    "exportName": { "type": "string" },
+    "sourceModule": { "type": "string" },
+    "kind": { "type": "string", "enum": ["type", "value", "all"] }
+  },
+  "additionalProperties": false
+}
