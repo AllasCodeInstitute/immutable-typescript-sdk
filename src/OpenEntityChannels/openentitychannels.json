@@ -1,0 +1,46 @@
+{
+  "protocol": "EntityCommunicationProtocol",
+  "version": "0.1.0",
+  "defaults": {
+    "enabled": true,
+    "body": "json",
+    "requiredHeaders": ["X-Entity-ID", "X-Canonical-Label", "X-Intent-ID", "X-Idempotence-Key"],
+    "idleTtlMs": 60000,
+    "responseIdentity": {
+      "alwaysReturn": ["id", "canonicalLabel"],
+      "uiUses": "canonicalLabel",
+      "systemUses": "id"
+    },
+    "hashing": { "algorithm": "sha256" },
+    "observability": { "protocols": ["sse", "ndjson"] }
+  },
+  "entities": {
+    "SDK": {
+      "canonicalLabel": "Immutable TypeScript SDK",
+      "channels": {
+        "describe": { "visibility": "public", "method": "GET", "route": "/openintent.yml" },
+        "agent": { "visibility": "public", "method": "POST", "route": "/agent" }
+      }
+    },
+    "ClientPackage": {
+      "canonicalLabel": "Client Package",
+      "channels": {
+        "connect": { "visibility": "internal", "protocols": ["websocket", "stdio", "sse", "streamable-http"] },
+        "callTool": { "visibility": "internal", "protocols": ["websocket", "streamable-http"] }
+      }
+    },
+    "ServerPackage": {
+      "canonicalLabel": "Server Package",
+      "channels": {
+        "registerTool": { "visibility": "internal", "protocols": ["typescript"] },
+        "emitServerEvent": { "visibility": "internal", "protocols": ["sse", "ndjson", "streamable-http"] }
+      }
+    },
+    "CorePackage": {
+      "canonicalLabel": "Core Package",
+      "channels": {
+        "exportSchemas": { "visibility": "internal", "protocols": ["typescript"] }
+      }
+    }
+  }
+}
