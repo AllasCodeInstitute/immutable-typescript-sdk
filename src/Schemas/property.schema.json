@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.allascode.institute/property.schema.json",
+  "title": "EntityProperty",
+  "type": "object",
+  "required": ["id", "entity", "name", "canonical_label", "type", "required"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9_.-]+$" },
+    "entity": { "type": "string" },
+    "name": { "type": "string", "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$" },
+    "canonical_label": { "type": "string", "minLength": 1 },
+    "type": { "type": "string", "enum": ["keyword", "scalar", "short_text", "text", "document", "chunk", "vector", "edge", "time", "boolean", "array", "object"] },
+    "required": { "type": "boolean" },
+    "immutable": { "type": "boolean", "default": false },
+    "description": { "type": "string" }
+  },
+  "additionalProperties": false
+}
