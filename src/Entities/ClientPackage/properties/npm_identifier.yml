@@ -1,0 +1,8 @@
+id: property.client.npm_identifier
+entity: entity.client-package
+name: npm_identifier
+canonical_label: Client NPM Identifier
+type: keyword
+required: true
+immutable: true
+description: The npm identifier for the client package.
