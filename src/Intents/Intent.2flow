@@ -1,0 +1,6 @@
+SDK -> exposes:DescribeOpenIntent, accepts:AgentRequest
+ClientPackage -> connect:ServerPackage, call:Tool, subscribe:ServerEvent
+ServerPackage -> register:Tool, register:Resource, register:Prompt, emit:ServerEvent
+CorePackage -> export:SchemaGroup, validate:ProtocolPayload
+DescribeOpenIntent -> route:/openintent.yml, method:GET, returns:OpenEntityChannels
+AgentRequest -> route:/agent, method:POST, delegates:Intent
