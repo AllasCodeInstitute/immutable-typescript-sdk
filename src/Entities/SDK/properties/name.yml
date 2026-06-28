@@ -1,0 +1,8 @@
+id: property.sdk.name
+entity: entity.sdk
+name: name
+canonical_label: SDK Name
+type: short_text
+required: true
+immutable: true
+description: Human-readable SDK name.
