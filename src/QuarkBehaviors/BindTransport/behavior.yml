@@ -1,0 +1,8 @@
+id: quark.bind-transport
+canonical_label: Bind Transport
+version: 0.1.0
+deterministic: true
+description: Binds a semantic channel to a concrete SDK transport capability.
+input_schema: schema.json
+output_schema: schema.json
+flow: behavior.2flow
