@@ -1,0 +1,8 @@
+id: quark.resolve-package-export
+canonical_label: Resolve Package Export
+version: 0.1.0
+deterministic: true
+description: Resolves a package public export entry to its TypeScript source module without wildcard expansion.
+input_schema: schema.json
+output_schema: schema.json
+flow: behavior.2flow
