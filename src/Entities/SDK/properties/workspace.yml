@@ -1,0 +1,8 @@
+id: property.sdk.workspace
+entity: entity.sdk
+name: workspace
+canonical_label: Workspace Definition
+type: object
+required: true
+immutable: false
+description: pnpm workspace package boundaries for packages, common modules, examples, and tests.
