@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.allascode.institute/openentitychannels.schema.json",
+  "title": "OpenEntityChannels",
+  "type": "object",
+  "required": ["protocol", "version", "defaults", "entities"],
+  "properties": {
+    "protocol": { "const": "EntityCommunicationProtocol" },
+    "version": { "type": "string" },
+    "defaults": { "type": "object" },
+    "entities": {
+      "type": "object",
+      "patternProperties": {
+        "^[A-Z][A-Za-z0-9]*$": { "type": "object" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

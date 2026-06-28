@@ -1,0 +1,1 @@
+ResolvePackageExport -> read:packageName, read:exportName, read:sourceModule, validate:explicitExport, emit:resolvedExport

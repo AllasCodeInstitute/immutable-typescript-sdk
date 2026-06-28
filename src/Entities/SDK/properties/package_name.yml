@@ -1,0 +1,8 @@
+id: property.sdk.package_name
+entity: entity.sdk
+name: package_name
+canonical_label: Package Name
+type: keyword
+required: true
+immutable: true
+description: Root npm package identifier used by the monorepo.

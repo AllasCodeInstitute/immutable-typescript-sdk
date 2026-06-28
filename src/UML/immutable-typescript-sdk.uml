@@ -1,0 +1,216 @@
+sdk ImmutableTypeScriptSDK {
+  entity SDK canonical_label "Immutable TypeScript SDK"
+  entity ClientPackage canonical_label "Client Package"
+  entity ServerPackage canonical_label "Server Package"
+  entity CorePackage canonical_label "Core Package"
+}
+
+ts_file "packages/client/src/index.ts" {
+content <<<TS
+// Public API for @modelcontextprotocol/client.
+//
+// This file defines the complete public surface. It consists of:
+//   - Package-specific exports: listed explicitly below (named imports)
+//   - Protocol-level types: re-exported from @modelcontextprotocol/core-internal/public
+//
+// Any new export added here becomes public API. Use named exports, not wildcards.
+
+export type {
+    AddClientAuthentication,
+    AuthOptions,
+    AuthProvider,
+    AuthResult,
+    ClientAuthMethod,
+    OAuthClientInformationContext,
+    OAuthClientProvider,
+    OAuthDiscoveryState,
+    OAuthServerInfo
+} from './client/auth';
+export {
+    assertSecureTokenEndpoint,
+    auth,
+    buildDiscoveryUrls,
+    computeScopeUnion,
+    discoverAuthorizationServerMetadata,
+    discoverOAuthMetadata,
+    discoverOAuthProtectedResourceMetadata,
+    discoverOAuthServerInfo,
+    exchangeAuthorization,
+    extractResourceMetadataUrl,
+    extractWWWAuthenticateParams,
+    fetchToken,
+    isHttpsUrl,
+    isStrictScopeSuperset,
+    parseErrorResponse,
+    prepareAuthorizationCodeRequest,
+    refreshAuthorization,
+    registerClient,
+    resolveClientMetadata,
+    selectClientAuthMethod,
+    selectResourceURL,
+    startAuthorization,
+    UnauthorizedError,
+    validateAuthorizationResponseIssuer,
+    validateClientMetadataUrl
+} from './client/auth';
+export {
+    AuthorizationServerMismatchError,
+    InsecureTokenEndpointError,
+    InsufficientScopeError,
+    IssuerMismatchError,
+    OAuthClientFlowError,
+    RegistrationRejectedError
+} from './client/authErrors';
+export type {
+    AssertionCallback,
+    ClientCredentialsProviderOptions,
+    CrossAppAccessContext,
+    CrossAppAccessProviderOptions,
+    PrivateKeyJwtProviderOptions,
+    StaticPrivateKeyJwtProviderOptions
+} from './client/authExtensions';
+export {
+    ClientCredentialsProvider,
+    createPrivateKeyJwtAuth,
+    CrossAppAccessProvider,
+    PrivateKeyJwtProvider,
+    StaticPrivateKeyJwtProvider
+} from './client/authExtensions';
+export type { CacheableRequestOptions, CallToolRequestOptions, ClientOptions, ConnectOptions, McpSubscription } from './client/client';
+export { Client } from './client/client';
+export { getSupportedElicitationModes } from './client/client';
+export type { DiscoverAndRequestJwtAuthGrantOptions, JwtAuthGrantResult, RequestJwtAuthGrantOptions } from './client/crossAppAccess';
+export { discoverAndRequestJwtAuthGrant, exchangeJwtAuthGrant, requestJwtAuthorizationGrant } from './client/crossAppAccess';
+export type { LoggingOptions, Middleware, RequestLogger } from './client/middleware';
+export { applyMiddlewares, createMiddleware, withLogging, withOAuth } from './client/middleware';
+export type {
+    CacheEntry,
+    CacheKey,
+    CacheMode,
+    CacheScope,
+    InMemoryResponseCacheStoreOptions,
+    MaybePromise,
+    ResponseCacheStore
+} from './client/responseCache';
+export { InMemoryResponseCacheStore, MAX_CACHE_TTL_MS } from './client/responseCache';
+export type { SSEClientTransportOptions } from './client/sse';
+export { SSEClientTransport, SseError } from './client/sse';
+export type { VersionNegotiationMode, VersionNegotiationOptions, VersionNegotiationProbeOptions } from './client/versionNegotiation';
+// StdioClientTransport, getDefaultEnvironment, DEFAULT_INHERITED_ENV_VARS, StdioServerParameters are exported from
+// the './stdio' subpath to keep the root entry free of process-spawning runtime dependencies (child_process, cross-spawn).
+export type {
+    ReconnectionScheduler,
+    StartSSEOptions,
+    StreamableHTTPClientTransportOptions,
+    StreamableHTTPReconnectionOptions
+} from './client/streamableHttp';
+export { StreamableHTTPClientTransport } from './client/streamableHttp';
+
+// runtime-aware wrapper (shadows core/public's fromJsonSchema with optional validator)
+export { fromJsonSchema } from './fromJsonSchema';
+
+// Multi-round-trip requests (protocol revision 2026-07-28): the client-side
+// auto-fulfilment knobs (ClientOptions.inputRequired) and the manual-mode
+// schema wrapper for callers that opt out of auto-fulfilment per call.
+export type { InputRequiredOptions } from '@modelcontextprotocol/core-internal';
+export { withInputRequired } from '@modelcontextprotocol/core-internal';
+
+// re-export curated public API from core
+export * from '@modelcontextprotocol/core-internal/public';
+TS
+}
+
+ts_file "packages/server/src/index.ts" {
+content <<<TS
+// Public API for @modelcontextprotocol/server.
+//
+// This file defines the complete public surface. It consists of:
+//   - Package-specific exports: listed explicitly below (named imports)
+//   - Protocol-level types: re-exported from @modelcontextprotocol/core-internal/public
+//
+// Any new export added here becomes public API. Use named exports, not wildcards.
+
+export type { CompletableSchema, CompleteCallback } from './server/completable';
+export { completable, isCompletable } from './server/completable';
+export type {
+    CreateMcpHandlerOptions,
+    LegacyHttpHandler,
+    McpHandlerRequestOptions,
+    McpHttpHandler,
+    McpRequestContext,
+    McpServerFactory
+} from './server/createMcpHandler';
+export { createMcpHandler, isLegacyRequest, legacyStatelessFallback } from './server/createMcpHandler';
+export type {
+    AnyToolHandler,
+    BaseToolCallback,
+    CompleteResourceTemplateCallback,
+    ListResourcesCallback,
+    PromptCallback,
+    ReadResourceCallback,
+    ReadResourceTemplateCallback,
+    RegisteredPrompt,
+    RegisteredResource,
+    RegisteredResourceTemplate,
+    RegisteredTool,
+    ResourceMetadata,
+    ToolCallback
+} from './server/mcp';
+export { McpServer, ResourceTemplate } from './server/mcp';
+export type { HostHeaderValidationResult } from './server/middleware/hostHeaderValidation';
+export { hostHeaderValidationResponse, localhostAllowedHostnames, validateHostHeader } from './server/middleware/hostHeaderValidation';
+export type { OriginValidationResult } from './server/middleware/originValidation';
+export { localhostAllowedOrigins, originValidationResponse, validateOriginHeader } from './server/middleware/originValidation';
+export type { PerRequestHTTPServerTransportOptions, PerRequestMessageExtra, PerRequestResponseMode } from './server/perRequestTransport';
+export { PerRequestHTTPServerTransport } from './server/perRequestTransport';
+// Opt-in HMAC sealing for the multi-round-trip requestState (SEP-2322): the
+// convenience codec consumers drop into ServerOptions.requestState.verify.
+export type { RequestStateCodec, RequestStateCodecOptions } from './server/requestStateCodec';
+export { createRequestStateCodec } from './server/requestStateCodec';
+export type { ServerOptions } from './server/server';
+export { Server } from './server/server';
+// subscriptions/listen change-event sourcing seam (protocol revision 2026-07-28).
+export type { ServerEvent, ServerEventBus, ServerNotifier } from './server/serverEventBus';
+export { InMemoryServerEventBus } from './server/serverEventBus';
+// StdioServerTransport and the serveStdio entry are exported from the './stdio' subpath — server stdio
+// has only type-level Node imports (erased at compile time), but matching the client's `./stdio` subpath
+// gives consumers a consistent shape across packages.
+export type {
+    EventId,
+    EventStore,
+    HandleRequestOptions,
+    StreamId,
+    WebStandardStreamableHTTPServerTransportOptions
+} from './server/streamableHttp';
+export { WebStandardStreamableHTTPServerTransport } from './server/streamableHttp';
+
+// runtime-aware wrapper (shadows core/public's fromJsonSchema with optional validator)
+export { fromJsonSchema } from './fromJsonSchema';
+
+// Inbound HTTP request classification (dual-era serving): the body-primary era
+// predicate used by createMcpHandler, exported for hand-wired compositions.
+export type {
+    InboundClassificationOutcome,
+    InboundHttpRequest,
+    InboundLadderRejection,
+    InboundLegacyRoute,
+    InboundLegacyRouteReason,
+    InboundModernRoute,
+    InboundValidationRung
+} from '@modelcontextprotocol/core-internal';
+export { classifyInboundRequest } from '@modelcontextprotocol/core-internal';
+
+// Cache hints for cacheable 2026-07-28 results (ServerOptions.cacheHints and
+// the registerResource cacheHint option).
+export type { CacheHint, CacheScope } from '@modelcontextprotocol/core-internal';
+
+// Multi round-trip requests (protocol revision 2026-07-28): the authoring
+// helpers a handler uses to request additional client input by returning an
+// input-required result instead of sending a server→client request.
+export type { InputRequiredSpec } from '@modelcontextprotocol/core-internal';
+export { acceptedContent, inputRequired } from '@modelcontextprotocol/core-internal';
+
+// re-export curated public API from core
+export * from '@modelcontextprotocol/core-internal/public';
+TS
+}

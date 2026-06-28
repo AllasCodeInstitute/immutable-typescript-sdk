@@ -1,0 +1,5 @@
+SystemIntent.CompileUml -> read:src/UML/immutable-typescript-sdk.uml, generate:packages/client/src/index.ts, generate:packages/server/src/index.ts, generate:packages/core/src/index.ts
+SystemIntent.CheckUml -> read:src/UML/immutable-typescript-sdk.uml, compare:existingTypeScriptBarrels, fail:onDiff
+SystemIntent.ResolveExport -> package:PackageEntity, symbol:ExportSymbol, source:SourceModule
+SystemIntent.BindChannel -> entity:Entity, channel:Channel, transport:Transport
+SystemIntent.EmitObservation -> hash:TraceHash, protocol:SSE_NDJSON

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.allascode.institute/quarkbehavior.schema.json",
+  "title": "QuarkBehavior",
+  "type": "object",
+  "required": ["id", "canonical_label", "version", "deterministic", "input_schema", "output_schema"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9_.-]+$" },
+    "canonical_label": { "type": "string", "minLength": 1 },
+    "version": { "type": "string" },
+    "deterministic": { "const": true },
+    "description": { "type": "string" },
+    "input_schema": { "type": "string" },
+    "output_schema": { "type": "string" },
+    "config": { "type": "string" },
+    "flow": { "type": "string", "pattern": "^.+\\.2flow$" }
+  },
+  "additionalProperties": false
+}

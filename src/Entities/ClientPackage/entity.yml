@@ -1,0 +1,18 @@
+id: entity.client-package
+canonical_label: Client Package
+kind: package
+version: 0.1.0
+description: Public client package surface for transports, auth, cache, middleware, and MCP client calls.
+properties:
+  - properties/package_name.yml
+  - properties/public_barrel.yml
+  - properties/transports.yml
+  - properties/auth_methods.yml
+behaviors:
+  - quark.resolve-package-export
+  - quark.bind-transport
+  - atomic.build-client-runtime
+channels:
+  - ClientPackage.connect
+  - ClientPackage.callTool
+  - ClientPackage.subscribe

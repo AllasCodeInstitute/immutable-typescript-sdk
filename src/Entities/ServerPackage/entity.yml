@@ -1,0 +1,18 @@
+id: entity.server-package
+canonical_label: Server Package
+kind: package
+version: 0.1.0
+description: Public server package surface for tools, resources, prompts, HTTP handlers, transports, and event bus.
+properties:
+  - properties/npm_identifier.yml
+  - properties/public_barrel.yml
+  - properties/tools.yml
+  - properties/resources.yml
+behaviors:
+  - quark.resolve-package-export
+  - quark.validate-jsonrpc-envelope
+  - atomic.build-server-runtime
+channels:
+  - ServerPackage.registerTool
+  - ServerPackage.readResource
+  - ServerPackage.emitServerEvent

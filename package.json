@@ -21,6 +21,8 @@
         "mcp"
     ],
     "scripts": {
+        "compile:uml": "tsx scripts/compile-uml-to-ts.ts",
+        "check:uml": "tsx scripts/compile-uml-to-ts.ts --check",
         "fetch:schema-twins": "tsx scripts/fetch-schema-twins.ts",
         "fetch:spec-examples": "tsx scripts/fetch-spec-examples.ts",
         "fetch:spec-types": "tsx scripts/fetch-spec-types.ts",

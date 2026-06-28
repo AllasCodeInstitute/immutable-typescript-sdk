@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.allascode.institute/behavior-composition.schema.json",
+  "title": "BehaviorComposition",
+  "type": "object",
+  "required": ["id", "canonical_label", "version", "composes", "flow"],
+  "properties": {
+    "id": { "type": "string" },
+    "canonical_label": { "type": "string" },
+    "version": { "type": "string" },
+    "description": { "type": "string" },
+    "composes": { "type": "array", "items": { "type": "string" } },
+    "input_schema": { "type": "string" },
+    "output_schema": { "type": "string" },
+    "flow": { "type": "string" }
+  },
+  "additionalProperties": false
+}

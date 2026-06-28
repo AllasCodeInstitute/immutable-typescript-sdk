@@ -1,0 +1,14 @@
+id: entity.core-package
+canonical_label: Core Package
+kind: package
+version: 0.1.0
+description: Public schema package surface for MCP, OAuth, OpenID, JSON-RPC, tasks, tools, resources, prompts, and content schemas.
+properties:
+  - properties/npm_identifier.yml
+  - properties/public_barrel.yml
+  - properties/schema_groups.yml
+behaviors:
+  - quark.resolve-package-export
+  - atomic.compile-uml-public-api
+channels:
+  - CorePackage.exportSchemas

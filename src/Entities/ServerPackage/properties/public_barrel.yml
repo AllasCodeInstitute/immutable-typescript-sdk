@@ -1,0 +1,8 @@
+id: property.server.public_barrel
+entity: entity.server-package
+name: public_barrel
+canonical_label: Server Public Barrel
+type: document
+required: true
+immutable: false
+description: Public TypeScript barrel generated from the UML compiler.

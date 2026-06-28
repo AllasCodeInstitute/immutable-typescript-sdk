@@ -1,0 +1,9 @@
+id: atomic.compile-uml-public-api
+canonical_label: Compile UML Public API
+version: 0.1.0
+description: Composes package export resolution and file emission to regenerate TypeScript public barrels from the UML model.
+composes:
+  - quark.resolve-package-export
+flow: behavior.2flow
+input_schema: schema.json
+output_schema: schema.json
