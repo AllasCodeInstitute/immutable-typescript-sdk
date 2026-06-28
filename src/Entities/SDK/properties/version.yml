@@ -1,0 +1,8 @@
+id: property.sdk.version
+entity: entity.sdk
+name: version
+canonical_label: SDK Version
+type: keyword
+required: true
+immutable: false
+description: Current semantic refactor version, independent from package release versions.
