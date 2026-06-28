@@ -1,0 +1,16 @@
+id: entity.sdk
+canonical_label: Immutable TypeScript SDK
+kind: sdk
+version: 0.1.0
+description: Semantic root entity for the TypeScript SDK monorepo.
+properties:
+  - properties/name.yml
+  - properties/package_name.yml
+  - properties/version.yml
+  - properties/workspace.yml
+behaviors:
+  - quark.resolve-package-export
+  - atomic.compile-uml-public-api
+channels:
+  - SDK.describe
+  - SDK.agent
